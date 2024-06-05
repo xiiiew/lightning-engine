@@ -4,7 +4,7 @@
 //go:build !wireinject
 // +build !wireinject
 
-package main
+package match
 
 import (
 	"lightning-engine/internal/match"
@@ -13,9 +13,22 @@ import (
 	"lightning-engine/mq"
 )
 
-// Injectors from wire.go:
+type App struct {
+	status          *status.Status
+	Server          *server.Server
+	SysSignalHandle *status.SysSignalHandle
+}
 
-func wireApp(pair []string) (*app, func(), error) {
+func newApp(st *status.Status, se *server.Server, ss *status.SysSignalHandle) *App {
+	return &App{
+		status:          st,
+		Server:          se,
+		SysSignalHandle: ss,
+	}
+}
+
+// Injectors from wire.go:
+func WireApp(pair []string) (*App, func(), error) {
 	statusStatus := status.NewStatus()
 	imq := mq.NewYourMq()
 	matchPool, err := match.NewMatchPool(statusStatus, pair, imq)

@@ -21,12 +21,30 @@ lightning-engine通过gRPC接收请求（挂单、撤单等），挂单时只接
 | 撤单   | v1  | 支持             | 支持                   |
 | 查询深度 | v1  | 支持             | 支持                   |
 
-## 使用
+## example使用
 
 ```shell
-cd cmd/match
-go run main.go wire_gen.go
+go run example/main.go
+☁  lightning-engine [master] ⚡  go run example/main.go
+2024/04/22 18:04:22 [RPC] :8080
+2024/04/22 18:04:22 启动监听终端信号成功
+send buy Result:{Msg:"success"} <nil>
+send sell Result:{Msg:"success"} <nil>
+2024/04/22 18:04:23 成交单： [{Id:1713780263144 Pair:BTC-USDT MakerId:1 TakerId:2 MakerUser:2 TakerUser:2 Price:21000 Amount:1 TakerOrderSide:sell TakerOrderType:limit TakerTimeInForce:GTC Ts:1713780263144}]
+send buy Result:{Msg:"success"} <nil>
+2024/04/22 18:04:24 成交单： [{Id:1713780264146 Pair:BTC-USDT MakerId:1 TakerId:2 MakerUser:2 TakerUser:2 Price:21000 Amount:1 TakerOrderSide:sell TakerOrderType:limit TakerTimeInForce:GTC Ts:1713780264146}]
+send sell Result:{Msg:"success"} <nil>
+send buy Result:{Msg:"success"} <nil>
+2024/04/22 18:04:25 成交单： [{Id:1713780265147 Pair:BTC-USDT MakerId:1 TakerId:2 MakerUser:2 TakerUser:2 Price:21000 Amount:1 TakerOrderSide:sell TakerOrderType:limit TakerTimeInForce:GTC Ts:1713780265147}]
+send sell Result:{Msg:"success"} <nil>
+send buy Result:{Msg:"success"} <nil>
+2024/04/22 18:04:26 成交单： [{Id:1713780266149 Pair:BTC-USDT MakerId:1 TakerId:2 MakerUser:2 TakerUser:2 Price:21000 Amount:1 TakerOrderSide:sell TakerOrderType:limit TakerTimeInForce:GTC Ts:1713780266149}]
+send sell Result:{Msg:"success"} <nil>
+^C2024/04/22 18:04:26 handle signal: interrupt
+2024/04/22 18:04:26 正在安全退出服务...
+2024/04/22 18:04:26 安全退出完成
 ```
+
 
 ## Contact Us
 
